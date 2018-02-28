@@ -16,10 +16,9 @@ import java.util.Date;
 @Service
 public class UserService {
 
-    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
     @Cacheable(value = "mycache", key = "#param")
     public String getTime(String param) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String currTime = sdf.format(new Date());
         System.out.println("add service---------------------:" + currTime);
         return currTime;
@@ -32,6 +31,7 @@ public class UserService {
 
     @CachePut(value = "mycache", key = "#param")
     public String updateTime(String param) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String currTime = sdf.format(new Date());
         System.out.println("update service---------------------:" + currTime);
         return currTime;
